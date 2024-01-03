@@ -1,11 +1,8 @@
-import Directory from './components/directory/directory.component'
-import {Routes, Route} from 'react-router-dom'
-import Navbar from './components/navbar/navbar.component'
-import Home from './routes/home/hoem.component'
+import Directory from '../../components/directory/directory.component'
 
-import './App.scss'
+import '../../App.scss'
 
-const App = () => {
+const Home = () => {
   const categories = [
     {
       "id": 1,
@@ -36,13 +33,9 @@ const App = () => {
   
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Navbar />} >
-          <Route  index element={<Home />} />
-        </Route>
-      </Routes>
+      <Directory categories={categories} />
     </div>  
   )
 }
 
-export default App
+export default Home
