@@ -2,6 +2,7 @@ import Directory from './components/directory/directory.component'
 import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar/navbar.component'
 import Home from './routes/home/hoem.component'
+import SignIn from './routes/sign-in/sign-in.component'
 
 import './App.scss'
 
@@ -39,6 +40,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Navbar />} >
           <Route  index element={<Home />} />
+          <Route path='signin' element={<SignIn />} />
         </Route>
       </Routes>
     </div>  
