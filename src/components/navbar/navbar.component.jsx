@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import { Outlet, Link } from 'react-router-dom' 
 import SvgImage from '../../assets/crown.svg'
+import { UserContext } from '../../contexts/user.contexts'
 import './navbar.styles.scss'
 
 const Navbar = () => {
+    const {currentUser} = useContext(UserContext)
+    console.log('current user', currentUser)
     return (
         <>
             <div className='navigation'>
