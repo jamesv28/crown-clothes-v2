@@ -2,6 +2,7 @@ import Directory from './components/directory/directory.component'
 import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar/navbar.component'
 import Home from './routes/home/hoem.component'
+import Shop from './routes/shop/shop.component'
 import Authentication from './routes/authentication/authentication'
 
 import './App.scss'
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/' element={<Navbar />} >
           <Route  index element={<Home />} />
           <Route path='auth' element={<Authentication />} />
+          <Route path='shop' element={<Shop />} />
         </Route>
       </Routes>
     </div>  
