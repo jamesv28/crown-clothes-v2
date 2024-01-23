@@ -3,7 +3,8 @@ import { Outlet, Link } from 'react-router-dom'
 import SvgImage from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user.contexts'
 import {signOutUser} from '../../utils/firebase/firebase.utils'
-
+import CartIcon from '../cart-icon/cart-icon.component'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import './navbar.styles.scss'
 
 const Navbar = () => {
@@ -19,13 +20,19 @@ const Navbar = () => {
                     <Link className='nav-link' to='/shop'>Shop</Link>
                     {
                         currentUser ? (
-                            <span className='nav-link' onClick={signOutUser}>Sign Out</span>
+                            <span className='nav-link' onClick={signOutUser}>
+                                Sign Out
+                            </span>
                         ) : (
-                             <Link className='nav-link' to='/auth'>Sign In</Link>
+                             <Link className='nav-link' to='/auth'>
+                                Sign In
+                            </Link>
                         )
 
                     }
+                    <CartIcon />
                 </div>
+                <CartDropdown />
             </div>
             <Outlet />
         </>
