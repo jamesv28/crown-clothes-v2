@@ -1,7 +1,8 @@
-import { useContext } from 'react'
+import { createContext, useContext } from 'react'
 import { Outlet, Link } from 'react-router-dom' 
 import SvgImage from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user.contexts'
+import {CartContext} from '../../contexts/cart.context'
 import {signOutUser} from '../../utils/firebase/firebase.utils'
 import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
@@ -9,7 +10,7 @@ import './navbar.styles.scss'
 
 const Navbar = () => {
     const {currentUser} = useContext(UserContext)
-
+    const {isCartOpen} = createContext(CartContext)
     return (
         <>
             <div className='navigation'>
@@ -32,7 +33,7 @@ const Navbar = () => {
                     }
                     <CartIcon />
                 </div>
-                <CartDropdown />
+                {isCartOpen ? <CartDropdown /> : null}
             </div>
             <Outlet />
         </>
