@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { useContext } from 'react'
 import { Outlet, Link } from 'react-router-dom' 
 import SvgImage from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user.contexts'
@@ -10,7 +10,7 @@ import './navbar.styles.scss'
 
 const Navbar = () => {
     const {currentUser} = useContext(UserContext)
-    const {isCartOpen} = createContext(CartContext)
+    const {isCartOpen} = useContext(CartContext)
     return (
         <>
             <div className='navigation'>
@@ -33,7 +33,7 @@ const Navbar = () => {
                     }
                     <CartIcon />
                 </div>
-                {isCartOpen ? <CartDropdown /> : null}
+                {isCartOpen && <CartDropdown />}
             </div>
             <Outlet />
         </>
