@@ -1,43 +1,43 @@
-import { useContext } from 'react'
-import { Outlet, Link } from 'react-router-dom' 
-import SvgImage from '../../assets/crown.svg'
-import { UserContext } from '../../contexts/user.contexts'
-import {CartContext} from '../../contexts/cart.context'
-import {signOutUser} from '../../utils/firebase/firebase.utils'
-import CartIcon from '../cart-icon/cart-icon.component'
-import CartDropdown from '../cart-dropdown/cart-dropdown.component'
-import './navbar.styles.scss'
+import { useContext } from "react";
+import { Outlet, Link } from "react-router-dom";
+import SvgImage from "../../assets/crown.svg";
+import { UserContext } from "../../contexts/user.contexts";
+import { CartContext } from "../../contexts/cart.context";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import {
+  NavbarContaienr,
+  LogoContainer,
+  NavLinksContaienr,
+  NavLink,
+} from "./navbar.styles";
 
 const Navbar = () => {
-    const {currentUser} = useContext(UserContext)
-    const {isCartOpen} = useContext(CartContext)
-    return (
-        <>
-            <div className='navigation'>
-                <Link to='/' className='logo-container'>
-                  <img src={SvgImage} className='logo' />
-                </Link>
-                <div className="nav-links-container">
-                    <Link className='nav-link' to='/shop'>Shop</Link>
-                    {
-                        currentUser ? (
-                            <span className='nav-link' onClick={signOutUser}>
-                                Sign Out
-                            </span>
-                        ) : (
-                             <Link className='nav-link' to='/auth'>
-                                Sign In
-                            </Link>
-                        )
+  const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
+  return (
+    <>
+      <NavbarContaienr>
+        <LogoContainer to="/" className="logo-container">
+          <img src={SvgImage} className="logo" />
+        </LogoContainer>
+        <NavLinksContaienr>
+          <NavLink to="/shop">Shop</NavLink>
+          {currentUser ? (
+            <NavLink as="span" onClick={signOutUser}>
+              Sign Out
+            </NavLink>
+          ) : (
+            <NavLink to="/auth">Sign In</NavLink>
+          )}
+          <CartIcon />
+        </NavLinksContaienr>
+        {isCartOpen && <CartDropdown />}
+      </NavbarContaienr>
+      <Outlet />
+    </>
+  );
+};
 
-                    }
-                    <CartIcon />
-                </div>
-                {isCartOpen && <CartDropdown />}
-            </div>
-            <Outlet />
-        </>
-    )
-}
-
-export default Navbar
+export default Navbar;
