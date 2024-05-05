@@ -1,0 +1,9 @@
+***
+Reducers - patttern for state management
+In order to change the cart reducer we call an action
+action is just an object that takes two parameters: 
+{
+    type: string,
+    payload: anything at all
+}
+
