@@ -4,6 +4,16 @@ In order to change the cart reducer we call an action
 action is just an object that takes two parameters: 
 {
     type: string,
-    payload: anything at all
+    payload: anything at all (optional)
+}
+
+In the reducer, we pass two parameters:
+state: which refers to the current state of the reducer,
+action: 
+
+In the reducer, always spread the initial state, and then all of the values you wish to change
+return {
+    ...state,
+    currentUser: payload
 }
 
